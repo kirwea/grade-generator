@@ -1,16 +1,17 @@
-//speeed detector that awards demerit points to drivers who violate speed limit
-//function declared
-function speed_detector(speed){
-    if (speed <= 70){
-        console.log("ok")
-    }else{
-        let points = (speed - 70) / 5
-        if (points >= 12){
-            console.log("License suspended")
-        }else{
-            console.log("Points: " + points)
-        }
+const speedDetector = require('prompt-sync');
+const prompt = speedDetector();
+// calculate speed
+function speedMonitor(){
+    let speed = prompt('speed:');//use prompt for input
+    if(speed <= 70){
+        console.log('Ok');//
     }
-
+    else if(speed > 70 && speed <= 130){
+        let demeritPoint =  (speed-70)/5;
+        console.log(`points: ${demeritPoint}`);//calculate demerit points
+    }
+    else{
+         console.log("License suspended")
+    }
 }
-console.log(speed_detector(150))
+speedMonitor();
